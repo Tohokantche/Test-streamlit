@@ -6,6 +6,10 @@ authors = [
     {name = "Aurele Gnanha",email = "aurele.gnanha@gmail.com"}
 ]
 readme = "README.md"
+
+packages = [
+    { include = "crewai", from = "src" },
+]
 requires-python = ">=3.11,<3.13"
 dependencies = [
     "aiohappyeyeballs (==2.6.1)",
