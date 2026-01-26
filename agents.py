@@ -2,7 +2,6 @@ from crewai import Agent
 #from langchain_openai import ChatOpenAI
 #from langchain_groq import ChatGroq  # Import Groq client
 from langchain_openai import ChatOpenAI
-from openai import OpenAI
 import os
 from crewai_tools import SerperDevTool,WebsiteSearchTool, ScrapeWebsiteTool 
 
@@ -23,7 +22,7 @@ class ResearchCrewAgents:
        #  self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
        #  self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
        #  self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
-        self.deepseek = OpenAI(model="deepseek/deepseek-r1-0528:free", 
+        self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", 
                                    api_key=os.environ.get("OPENAI_API_KEY"),
                                    base_url="https://openrouter.ai/api/v1", 
                                    temperature=0.7)
