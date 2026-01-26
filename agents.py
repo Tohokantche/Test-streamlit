@@ -16,13 +16,16 @@ class ResearchCrewAgents:
         self.web_scrape=ScrapeWebsiteTool()
 
 
-       # OpenAI Models
-        self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-        self.gpt4 = ChatOpenAI(model_name="gpt-4-turbo", temperature=0.7)
-        self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
-        self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
-        self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
-        self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", base_url="https://openrouter.ai/api/v1", temperature=0.7)
+       # # OpenAI Models
+       #  self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+       #  self.gpt4 = ChatOpenAI(model_name="gpt-4-turbo", temperature=0.7)
+       #  self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
+       #  self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
+       #  self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
+        self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", 
+                                   api_key=os.environ.get("OPENAI_API_KEY"),
+                                   base_url="https://openrouter.ai/api/v1", 
+                                   temperature=0.7)
         
         # Groq Models 
         # self.llama3_8b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="llama3-8b-8192")
