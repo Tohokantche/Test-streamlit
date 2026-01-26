@@ -28,7 +28,8 @@ class ResearchCrew:
         crew = Crew(
             agents=[researcher, analyst, writer],
             tasks=[research_task, analysis_task, writing_task],
-            process=Process.sequential
+            process=Process.sequential,
+            memory=True
         )
 
         # Execute the crew to carry out the research project
