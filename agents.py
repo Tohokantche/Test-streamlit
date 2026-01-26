@@ -22,15 +22,16 @@ class ResearchCrewAgents:
         self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
         self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
         self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
+        self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", base_url="https://openrouter.ai/api/v1", temperature=0.7)
         
-        # Groq Models
+        # Groq Models 
         # self.llama3_8b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="llama3-8b-8192")
         # self.llama3_70b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="llama3-70b-8192")
         # self.mixtral_8x7b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="mixtral-8x7b-32768")
         # self.gemma_7b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="gemma-7b-it")
         
         # CHANGE YOUR MODEL HERE
-        self.selected_llm = self.gpt4
+        self.selected_llm = self.deepseek
     def researcher(self):
     # Detailed agent setup for the Research Expert
         return Agent(
