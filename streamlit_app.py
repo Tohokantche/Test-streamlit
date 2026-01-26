@@ -2,6 +2,10 @@ import streamlit as st
 from main import ResearchCrew  # Import the ResearchCrew class from main.py
 import os
 
+# OPENAI_API_KEY = "OPENAI_API_KEY"
+# GROQ_API_KEY = "GROQ_API_KEY"
+# SERPER_API_KEY = "SERPER_API_KEY"
+
 st.title('Your Research Assistant')
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
