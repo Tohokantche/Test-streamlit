@@ -1,5 +1,4 @@
 from crewai import Agent
-#from langchain_openai import ChatOpenAI
 #from langchain_groq import ChatGroq  # Import Groq client
 from langchain_openai import ChatOpenAI
 import os
@@ -52,15 +51,13 @@ class ResearchCrewAgents:
     def analyst(self):
         # Detailed agent setup for the Analyst
         return Agent(
-            role='Analyst',
+            role='Experienced analyst',
             goal='Come up with a learning curriculumn that will allow for the visionary to reach deep and broad knowledge in order to accomplish their goals',
             backstory="You are a talented organized logical educator who can deductively comeup with amazing learning plans in order to provide guidance starting from the goal and working backwards to the begining of a novice level so as to easily bridge the gap between inexperienced and experts alike.",
             verbose=True,
             allow_delegation=False,
             llm=self.selected_llm,
             max_iter=3,
-
-
         )
 
     def writer(self):
@@ -74,6 +71,4 @@ class ResearchCrewAgents:
             llm=self.selected_llm,
             tools=[self.serper, self.web, self.web_scrape],
             max_iter=3,
-
-
         )
