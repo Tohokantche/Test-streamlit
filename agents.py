@@ -17,15 +17,15 @@ class ResearchCrewAgents:
 
 
        # # OpenAI Models
-       #  self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-       #  self.gpt4 = ChatOpenAI(model_name="gpt-4-turbo", temperature=0.7)
-       #  self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
-       #  self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
-       #  self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
-        self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", 
-                                   api_key=os.environ.get("OPENAI_API_KEY"),
-                                   base_url="https://openrouter.ai/api/v1", 
-                                   temperature=0.7)
+        self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        self.gpt4 = ChatOpenAI(model_name="gpt-4-turbo", temperature=0.7)
+        self.gpt3_5_turbo_0125 = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=0.7)
+        self.gpt3_5_turbo_1106 = ChatOpenAI(model_name="gpt-3.5-turbo-1106", temperature=0.7)
+        self.gpt3_5_turbo_instruct = ChatOpenAI(model_name="gpt-3.5-turbo-instruct", temperature=0.7)
+        # self.deepseek = ChatOpenAI(model_name="deepseek/deepseek-r1-0528:free", 
+        #                            api_key=os.environ.get("OPENAI_API_KEY"),
+        #                            base_url="https://openrouter.ai/api/v1", 
+        #                            temperature=0.7)
         
         # Groq Models 
         # self.llama3_8b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="llama3-8b-8192")
@@ -34,7 +34,7 @@ class ResearchCrewAgents:
         # self.gemma_7b = ChatGroq(temperature=0.7, groq_api_key=os.environ.get("GROQ_API_KEY"), model_name="gemma-7b-it")
         
         # CHANGE YOUR MODEL HERE
-        self.selected_llm = self.deepseek
+        self.selected_llm = self.gpt3_5_turbo_0125
     def researcher(self):
     # Detailed agent setup for the Research Expert
         return Agent(
