@@ -1,7 +1,6 @@
 import streamlit as st
 from main import ResearchCrew  # Import the ResearchCrew class from main.py
 import os
-from IPython.display import Markdown
 
 
 # OPENAI_API_KEY = "OPENAI_API_KEY"
@@ -26,4 +25,4 @@ if st.button('Run Research'):
         research_crew = ResearchCrew(inputs)
         result = research_crew.run()
         st.subheader("Results of your research project:")
-        st.write(Markdown(result.raw))
+        st.markdown(result.raw)
