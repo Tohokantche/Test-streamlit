@@ -21,6 +21,8 @@ if 'completed_task' not in st.session_state:
 def disable_button():
     if not topic or not detailed_questions:
         st.error("Please fill all the fields.")
+    if st.session_state.completed_task:
+        st.error("Task already completed !")
     
 def get_cost(crew):
     costs = 0.150 * (crew.usage_metrics.prompt_tokens + crew.usage_metrics.completion_tokens) / 1_000_000
