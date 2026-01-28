@@ -30,14 +30,17 @@ def get_cost(crew):
     df_usage_metrics = pd.DataFrame([usage_cp])
     return df_usage_metrics
 
+def on_text_change():
+    st.rerun()
+    
 with st.sidebar:
     st.header('Enter Research Details')
-    topic = st.text_input("Main topic of your research:")
-    detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:")
+    topic = st.text_input("Main topic of your research:",on_change=on_text_change)
+    detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:", on_change=on_text_change)
 
 if st.button('Run Research', on_click=disable_button, disabled=st.session_state.button_disabled):
     if topic and  detailed_questions:
-        with st.spinner("Wait for it ...", show_time=True):
+        with st.spinner("Wait for a moment ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
             research_crew = ResearchCrew(inputs)
             st.divider()
@@ -52,5 +55,5 @@ if st.button('Run Research', on_click=disable_button, disabled=st.session_state.
             time.sleep(5)
             st.success("Done!")
             st.session_state.button_disabled = False
-            st.rerun()
+            #st.rerun()
         
