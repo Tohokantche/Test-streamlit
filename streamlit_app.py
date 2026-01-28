@@ -21,7 +21,7 @@ if 'button_disabled' not in st.session_state:
 def disable_button():
     if not topic or not detailed_questions:
         st.error("Please fill all the fields.")
-    else
+    else:
         st.session_state.button_disabled = True
     # You can also run other functions or logic here
 
