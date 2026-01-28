@@ -18,7 +18,7 @@ if 'task_count' not in st.session_state:
     st.session_state.task_count = 0
 
 # 2. Define a callback function to run when the button is clicked
-def disable_button():
+def on_button_click():
     if not topic or not detailed_questions:
         st.error("Please fill all the fields.")
     if st.session_state.completed_task:
@@ -42,7 +42,9 @@ with st.sidebar:
     topic = st.text_input("Main topic of your research:",on_change=on_text_change)
     detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:", on_change=on_text_change)
 
-if st.button('Run Research', on_click=disable_button):
+if st.button('Run Research', on_click=on_button_click):
+    if st.session_state.completed_task:
+        return
     if topic and detailed_questions and not st.session_state.completed_task and st.session_state.task_count<2:
         with st.spinner("Wait for a moment ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
