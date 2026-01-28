@@ -11,9 +11,6 @@ os.environ["SERPER_API_KEY"] = st.secrets["SERPER_API_KEY"]
 
 
 # 1. Initialize session state
-if 'button_disabled' not in st.session_state:
-    st.session_state.button_disabled = False
-
 if 'completed_task' not in st.session_state:
     st.session_state.completed_task = False
 
@@ -40,7 +37,7 @@ with st.sidebar:
     topic = st.text_input("Main topic of your research:",on_change=on_text_change)
     detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:", on_change=on_text_change)
 
-if st.button('Run Research', on_click=disable_button, disabled=st.session_state.button_disabled):
+if st.button('Run Research', on_click=disable_button):
     if topic and detailed_questions and not st.session_state.completed_task:
         with st.spinner("Wait for a moment ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
