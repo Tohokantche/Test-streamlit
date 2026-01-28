@@ -23,7 +23,7 @@ def on_button_click():
         st.error("Please fill all the fields.")
     # if st.session_state.completed_task:
     #     st.error("Task already completed !")
-    if st.session_state.task_count >=1:
+    if st.session_state.task_count >1:
         st.error("You can only perfrom two tasks !")
     
 def get_cost(crew):
