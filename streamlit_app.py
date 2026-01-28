@@ -2,6 +2,7 @@ import streamlit as st
 from main import ResearchCrew  # Import the ResearchCrew class from main.py
 import os
 import pandas as pd
+import time 
 
 # OPENAI_API_KEY = "OPENAI_API_KEY"
 # GROQ_API_KEY = "GROQ_API_KEY"
@@ -37,16 +38,20 @@ with st.sidebar:
 if st.button('Run Research', on_click=disable_button, disabled=st.session_state.button_disabled):
     if not topic or not detailed_questions:
         st.error("Please fill all the fields.")
+        st.session_state.button_disabled = False
     else:
-        inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
-        research_crew = ResearchCrew(inputs)
-        st.divider()
-        st.subheader("Results of your research project:")
-        # crew, result = research_crew.run()
-        # st.divider()
-        # st.subheader("Detailed cost of the agent run:")
-        # st.dataframe(get_cost(crew))
-        # st.divider()
-        # st.subheader("Results of your research project:")
-        # st.markdown(result.raw)
+        with st.spinner("Wait for it ...", show_time=True):
+            inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
+            research_crew = ResearchCrew(inputs)
+            st.divider()
+            st.subheader("Results of your research project:")
+            # crew, result = research_crew.run()
+            # st.divider()
+            # st.subheader("Detailed cost of the agent run:")
+            # st.dataframe(get_cost(crew))
+            # st.divider()
+            # st.subheader("Results of your research project:")
+            # st.markdown(result.raw)
+            time.sleep(5)
+            st.success("Done!")
         
