@@ -51,5 +51,6 @@ if st.button('Run Research', on_click=disable_button, disabled=st.session_state.
             # st.markdown(result.raw)
             time.sleep(5)
             st.success("Done!")
+            st.session_state.button_disabled = False
             st.rerun()
         
