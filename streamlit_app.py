@@ -21,8 +21,7 @@ if 'task_count' not in st.session_state:
 def on_button_click():
     if not topic or not detailed_questions:
         st.error("Please fill all the fields.")
-    # if st.session_state.completed_task:
-    #     st.error("Task already completed !")
+
     if st.session_state.task_count >1:
         st.error("You can only perfrom two tasks !")
     
@@ -48,16 +47,15 @@ if st.button('Run Research', on_click=on_button_click):
         with st.spinner("Wait for a moment ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
             research_crew = ResearchCrew(inputs)
-            st.divider()
-            st.subheader("Results of your research project:")
-            # crew, result = research_crew.run()
-            # st.divider()
-            # st.subheader("Detailed cost of the agent run:")
-            # st.dataframe(get_cost(crew))
             # st.divider()
             # st.subheader("Results of your research project:")
-            # st.markdown(result.raw)
-            time.sleep(5)
+            crew, result = research_crew.run()
+            st.divider()
+            st.subheader("Detailed cost of the agent run:")
+            st.dataframe(get_cost(crew))
+            st.divider()
+            st.subheader("Results of your research project:")
+            st.markdown(result.raw)
             st.success("Done!")
             st.session_state.completed_task = True
             st.session_state.task_count+=1
