@@ -32,7 +32,7 @@ class ResearchCrew:
         )
 
         # Execute the crew to carry out the research project
-        return crew.kickoff()
+        return crew, crew.kickoff()
 
 if __name__ == "__main__":
     print("Welcome to the Research Crew Setup")
