@@ -14,6 +14,9 @@ os.environ["SERPER_API_KEY"] = st.secrets["SERPER_API_KEY"]
 if 'completed_task' not in st.session_state:
     st.session_state.completed_task = False
 
+if 'task_count' not in st.session_state:
+    st.session_state.task_count = 0
+
 # 2. Define a callback function to run when the button is clicked
 def disable_button():
     if not topic or not detailed_questions:
@@ -38,7 +41,7 @@ with st.sidebar:
     detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:", on_change=on_text_change)
 
 if st.button('Run Research', on_click=disable_button):
-    if topic and detailed_questions and not st.session_state.completed_task:
+    if topic and detailed_questions and not st.session_state.completed_task and st.session_state.task_count<2:
         with st.spinner("Wait for a moment ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
             research_crew = ResearchCrew(inputs)
@@ -54,5 +57,6 @@ if st.button('Run Research', on_click=disable_button):
             time.sleep(5)
             st.success("Done!")
             st.session_state.completed_task = True
+            st.session_state.task_count+=1
             
         
