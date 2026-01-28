@@ -4,9 +4,6 @@ import os
 import pandas as pd
 import time 
 
-# OPENAI_API_KEY = "OPENAI_API_KEY"
-# GROQ_API_KEY = "GROQ_API_KEY"
-# SERPER_API_KEY = "SERPER_API_KEY"
 st.title('Your Research Assistant')
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
@@ -54,4 +51,5 @@ if st.button('Run Research', on_click=disable_button, disabled=st.session_state.
             # st.markdown(result.raw)
             time.sleep(5)
             st.success("Done!")
+            st.rerun()
         
