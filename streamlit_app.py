@@ -23,6 +23,8 @@ def disable_button():
         st.error("Please fill all the fields.")
     if st.session_state.completed_task:
         st.error("Task already completed !")
+    if st.session_state.task_count >=1:
+        st.error("You can only perfrom two tasks !")
     
 def get_cost(crew):
     costs = 0.150 * (crew.usage_metrics.prompt_tokens + crew.usage_metrics.completion_tokens) / 1_000_000
