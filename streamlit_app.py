@@ -19,7 +19,10 @@ if 'button_disabled' not in st.session_state:
 
 # 2. Define a callback function to run when the button is clicked
 def disable_button():
-    st.session_state.button_disabled = True
+    if not topic or not detailed_questions:
+        st.error("Please fill all the fields.")
+    else
+        st.session_state.button_disabled = True
     # You can also run other functions or logic here
 
 def get_cost(crew):
@@ -36,10 +39,7 @@ with st.sidebar:
     detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:")
 
 if st.button('Run Research', on_click=disable_button, disabled=st.session_state.button_disabled):
-    if not topic or not detailed_questions:
-        st.error("Please fill all the fields.")
-        st.session_state.button_disabled = False
-    else:
+    if topic and  detailed_questions:
         with st.spinner("Wait for it ...", show_time=True):
             inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}"
             research_crew = ResearchCrew(inputs)
